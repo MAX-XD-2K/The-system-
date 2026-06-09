@@ -1,7 +1,6 @@
 import express from "express";
 import path from "path";
 import fs from "fs";
-import { createServer as createViteServer } from "vite";
 import { GoogleGenAI, Type } from "@google/genai";
 import dotenv from "dotenv";
 import AdmZip from "adm-zip";
@@ -415,25 +414,7 @@ app.get("/api/download-project", (req, res) => {
   }
 });
 
-// --- VITE MIDDLEWARE OR STATIC SERVING ---
-async function bootstrapServer() {
-  if (process.env.NODE_ENV !== "production") {
-    const vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: "spa",
-    });
-    app.use(vite.middlewares);
-  } else {
-    const distPath = path.join(process.cwd(), 'dist');
-    app.use(express.static(distPath));
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
-    });
-  }
-
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`[THE SYSTEM] Activated on port ${PORT}`);
-  });
-}
-
-bootstrapServer();
+// --- START SERVER ---
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`[THE SYSTEM] Backend activated on port ${PORT}`);
+});
