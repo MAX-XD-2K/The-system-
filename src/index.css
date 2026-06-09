@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .font-orbitron {
+    font-family: 'Orbitron', sans-serif;
+  }
+  .font-rajdhani {
+    font-family: 'Rajdhani', sans-serif;
+  }
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  
+  .glow-cyan {
+    text-shadow: 0 0 4px rgba(34, 211, 238, 0.4);
+  }
+  .glow-orange {
+    text-shadow: 0px 0px 4px rgba(249, 115, 22, 0.4);
+  }
+  
+  .shadow-cyan-glow {
+    box-shadow: 0 4px 20px rgba(6, 182, 212, 0.08);
+  }
+  .shadow-orange-glow {
+    box-shadow: 0 4px 20px rgba(249, 115, 22, 0.08);
+  }
+}
+
+/* Custom scrollbars for pristine minimalism */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #060608;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e1e24;
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #22d3ee;
+}
+
+@keyframes pulse-slow {
+  50% { opacity: 0.4; }
+}
+.pulse-slow {
+  animation: pulse-slow 3s infinite;
+}
+

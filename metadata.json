@@ -1,0 +1,6 @@
+{
+  "name": "The System",
+  "description": "An immersive game-like progression system based on Solo Leveling that translates your real-life goals, priorities, and deadlines into main, side, and daily quests complete with status stats, custom ranks, and EXP rewards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
