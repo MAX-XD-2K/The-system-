@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Brain, Timer, Calendar, Swords, Plus, X, Loader2, User } from "lucide-react";
 import { playClick, playSystemNotice } from "../utils/sound";
+import { getApiUrl } from "../utils/api";
 
 interface SurveyData {
   goals: string;
@@ -87,7 +88,7 @@ export default function InitialCalibration({ onCalibrate }: CalibrationProps) {
     const intervalId = startCalibrationLoop(survey);
 
     try {
-      const response = await fetch("/api/generate-quests", {
+      const response = await fetch(getApiUrl("/api/generate-quests"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(survey),

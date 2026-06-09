@@ -33,6 +33,7 @@ import {
 import { PlayerStats, Quest, EmergencyQuestState, WeeklyReviewReport, ChecklistItem, Reward, ProgressHistoryEntry } from "./types";
 import { playClick, playLevelUp, playQuestComplete, playEmergencyQuestAlert, playSystemNotice, setSoundEnabled, getSoundEnabled } from "./utils/sound";
 import InitialCalibration from "./components/InitialCalibration";
+import { getApiUrl } from "./utils/api";
 
 const STORAGE_KEY_STATS = "the_system_player_stats";
 const STORAGE_KEY_QUESTS = "the_system_quests";
@@ -875,7 +876,7 @@ export default function App() {
     setEmergencyLoading(true);
 
     try {
-      const response = await fetch("/api/emergency-quest", {
+      const response = await fetch(getApiUrl("/api/emergency-quest"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -1032,7 +1033,7 @@ export default function App() {
       const completedCount = quests.filter(q => q.claimed).length;
       const failedCount = quests.filter(q => !q.claimed && q.completed === false && new Date(q.createdAt).getTime() < Date.now() - 7*24*3600*1000).length;
 
-      const response = await fetch("/api/weekly-review", {
+      const response = await fetch(getApiUrl("/api/weekly-review"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -1338,7 +1339,7 @@ export default function App() {
             </div>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
               <a
-                href="/api/download-project"
+                href={getApiUrl("/api/download-project")}
                 download="the-system-solo-leveling.zip"
                 onClick={() => playClick()}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 text-[10px] font-mono text-zinc-300 uppercase tracking-widest rounded-lg cursor-pointer transition-all hover:shadow-[0_0_10px_rgba(255,255,255,0.05)] active:scale-95"
