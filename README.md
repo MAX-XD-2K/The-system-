@@ -1,12 +1,8 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# The System
 
-# Run and deploy your AI Studio app
+A Solo Leveling themed quest log and progress tracker built with React, Tailwind CSS, Express, and Gemini.
 
 This contains everything you need to run your app locally.
-
-View your app in AI Studio: https://ai.studio/apps/ad641119-12ec-4fc9-8684-e13c5dfbee57
 
 ## Run Locally
 

@@ -13,7 +13,7 @@ const PORT = 3000;
 
 app.use(express.json());
 
-// Initialize Gemini SDK with telemetry header
+// Initialize Gemini SDK
 const getGeminiClient = (): GoogleGenAI => {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
@@ -21,11 +21,6 @@ const getGeminiClient = (): GoogleGenAI => {
   }
   return new GoogleGenAI({
     apiKey: apiKey || "MOCK_API_KEY",
-    httpOptions: {
-      headers: {
-        'User-Agent': 'aistudio-build',
-      }
-    }
   });
 };
 
